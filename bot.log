@@ -9,3 +9,7 @@
 2026-05-29 01:26:16,909 [INFO] All DNS checks passed! Your email domain is ready for cold outreach.
 2026-05-29 01:26:27,837 [INFO] Running DNS verification for domain: binarygrowth.org
 2026-05-29 01:26:28,135 [INFO] All DNS checks passed! Your email domain is ready for cold outreach.
+2026-05-28 22:28:46,652 [INFO] Starting send-one execution step.
+2026-05-28 22:28:46,653 [INFO] Random sleep scheduling active: sleeping for 39 minutes and 37 seconds...
+2026-05-28 23:08:23,659 [INFO] Status update: 0 fresh leads, 0 due follow-ups.
+2026-05-28 23:08:23,659 [INFO] No eligible leads to send to. All leads are finished, currently pending, or discarded.
