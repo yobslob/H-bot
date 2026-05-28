@@ -1,0 +1,4 @@
+pandas>=2.0.0
+python-dotenv>=1.0.0
+dnspython>=2.4.0
+portalocker>=2.7.0

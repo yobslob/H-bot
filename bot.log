@@ -1,0 +1,11 @@
+2026-05-29 01:25:55,215 [INFO] Starting send-one execution step.
+2026-05-29 01:25:55,332 [INFO] Status update: 2 fresh leads, 0 due follow-ups.
+2026-05-29 01:25:55,332 [INFO] Selected fresh lead: john.doe@example.com
+2026-05-29 01:25:55,332 [INFO] Selected template: template_1.html
+2026-05-29 01:25:55,332 [INFO] Dry run finished successfully. No files or emails modified.
+2026-05-29 01:26:03,359 [INFO] Running DNS verification for domain: binarygrowth.org
+2026-05-29 01:26:03,751 [WARNING] DNS issues detected! Please fix the errors listed above to prevent emails from going to spam.
+2026-05-29 01:26:16,284 [INFO] Running DNS verification for domain: binarygrowth.org
+2026-05-29 01:26:16,909 [INFO] All DNS checks passed! Your email domain is ready for cold outreach.
+2026-05-29 01:26:27,837 [INFO] Running DNS verification for domain: binarygrowth.org
+2026-05-29 01:26:28,135 [INFO] All DNS checks passed! Your email domain is ready for cold outreach.
