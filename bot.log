@@ -13,3 +13,5 @@
 2026-05-28 22:28:46,653 [INFO] Random sleep scheduling active: sleeping for 39 minutes and 37 seconds...
 2026-05-28 23:08:23,659 [INFO] Status update: 0 fresh leads, 0 due follow-ups.
 2026-05-28 23:08:23,659 [INFO] No eligible leads to send to. All leads are finished, currently pending, or discarded.
+2026-05-29 00:05:10,624 [INFO] Starting send-one execution step.
+2026-05-29 00:05:10,624 [INFO] Execution skipped: Today (Friday) is the scheduled day off for this week.
