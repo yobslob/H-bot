@@ -109,3 +109,7 @@
 2026-05-31 16:59:18,972 [INFO] Random sleep scheduling active: sleeping for 12 minutes and 58 seconds...
 2026-05-31 17:12:16,976 [INFO] Status update: 0 fresh leads, 0 due follow-ups.
 2026-05-31 17:12:16,976 [INFO] No eligible leads to send to. All leads are finished, currently pending, or discarded.
+2026-05-31 18:05:43,832 [INFO] Starting send-one execution step.
+2026-05-31 18:05:43,833 [INFO] Random sleep scheduling active: sleeping for 11 minutes and 8 seconds...
+2026-05-31 18:16:51,837 [INFO] Status update: 0 fresh leads, 0 due follow-ups.
+2026-05-31 18:16:51,837 [INFO] No eligible leads to send to. All leads are finished, currently pending, or discarded.
