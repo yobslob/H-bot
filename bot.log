@@ -317,3 +317,10 @@
 2026-06-07 14:48:23,757 [INFO] Execution skipped: Today (Sunday) is the scheduled day off for this week.
 2026-06-07 16:09:00,863 [INFO] Starting send-one execution step.
 2026-06-07 16:09:00,863 [INFO] Execution skipped: Today (Sunday) is the scheduled day off for this week.
+2026-06-08 00:28:38,031 [INFO] Starting send-one execution step.
+2026-06-08 00:28:38,031 [CRITICAL] Configuration error: Missing required configurations: SMTP_USER, SMTP_PASS. Please configure them in your .env file.
+2026-06-08 00:31:35,727 [INFO] Starting send-one execution step.
+2026-06-08 00:31:35,799 [INFO] Status update: 2 fresh leads, 0 due follow-ups.
+2026-06-08 00:31:35,799 [INFO] Selected fresh lead: lkshay22@gmail.com
+2026-06-08 00:31:35,800 [INFO] Selected template: template_3.html
+2026-06-08 00:31:35,811 [INFO] Dry run finished successfully. No files or emails modified.
