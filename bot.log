@@ -307,3 +307,5 @@
 2026-06-06 23:56:12,426 [INFO] No eligible leads to send to. All leads are finished, currently pending, or discarded.
 2026-06-07 02:48:19,104 [INFO] Starting send-one execution step.
 2026-06-07 02:48:19,104 [INFO] Execution skipped: Today (Sunday) is the scheduled day off for this week.
+2026-06-07 07:01:12,572 [INFO] Starting send-one execution step.
+2026-06-07 07:01:12,572 [INFO] Execution skipped: Today (Sunday) is the scheduled day off for this week.
