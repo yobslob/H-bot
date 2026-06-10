@@ -1,3 +1,4 @@
-Name,Email,Compliment,MessageId,LastSentAt,Status,Subject
-Yogesh,yogeshxiix@gmail.com,Scaling Outbound Operations,<178105669930.22548.1648140765287795803@gmail.com>,2026-06-10T01:58:24Z,SENT,Quick question for Yogesh
-lkshay,lkshay22@gmail.com,How to automate cold outreach,<178105672901.26944.2804960306225392599@gmail.com>,2026-06-10T01:58:53Z,SENT,Quick question for lkshay
+Name,Email,Compliment,MessageId,LastSentAt,Status
+Yogesh,yogeshxiix@gmail.com,Scaling Outbound Operations,<178105669930.22548.1648140765287795803@gmail.com>,2026-06-10T01:58:24Z,SENT
+lkshay,lkshay22@gmail.com,How to automate cold outreach,<178105672901.26944.2804960306225392599@gmail.com>,2026-06-10T01:58:53Z,SENT
+Yogesh,yogace1200@gmail.com,Scaling Outbound Operations,<178105739570.11516.14798843698565971387@binarygrowth.org>,2026-06-10T02:09:58Z,SENT

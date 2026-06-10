@@ -21,10 +21,10 @@ class SafeCSVHandler:
             try:
                 df = pd.read_csv(f)
             except pd.errors.EmptyDataError:
-                df = pd.DataFrame(columns=["Name", "Email", "Status", "MessageId", "LastSentAt", "Subject"])
+                df = pd.DataFrame(columns=["Name", "Email", "Status", "MessageId", "LastSentAt"])
             
             modified = False
-            for col in ["Status", "MessageId", "LastSentAt", "Subject"]:
+            for col in ["Status", "MessageId", "LastSentAt"]:
                 if col not in df.columns:
                     df[col] = pd.NA
                     modified = True
@@ -33,20 +33,20 @@ class SafeCSVHandler:
                 f.seek(0)
                 f.truncate()
                 df.to_csv(f, index=False)
-
+ 
     def get_leads(self) -> pd.DataFrame:
         """Reads the leads CSV under a shared lock."""
         with portalocker.Lock(self.filepath, 'r', timeout=10) as f:
             return pd.read_csv(f)
-
+ 
     def update_lead(self, email: str, status: str, message_id: Optional[str] = None, 
-                    last_sent_at: Optional[str] = None, subject: Optional[str] = None):
+                    last_sent_at: Optional[str] = None):
         """Updates a specific lead by email under an exclusive lock."""
         with portalocker.Lock(self.filepath, 'r+', timeout=15) as f:
             df = pd.read_csv(f)
             
             # Ensure tracking columns are of object/string dtype to prevent pandas warnings/errors
-            for col in ["Status", "MessageId", "LastSentAt", "Subject"]:
+            for col in ["Status", "MessageId", "LastSentAt"]:
                 if col in df.columns:
                     df[col] = df[col].astype(object)
             
@@ -64,8 +64,6 @@ class SafeCSVHandler:
                 df.loc[idx, 'MessageId'] = message_id
             if last_sent_at is not None:
                 df.loc[idx, 'LastSentAt'] = last_sent_at
-            if subject is not None:
-                df.loc[idx, 'Subject'] = subject
                 
             f.seek(0)
             f.truncate()

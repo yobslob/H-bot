@@ -164,20 +164,11 @@ def cmd_send_one(args):
     html_body = format_text_placeholders(template_content, selected_lead)
     
     # Determine subject line
-    subject = ""
-    if kind == 'fresh':
-        # Select subject line corresponding to chosen template, fallback if custom added
-        subject_tpl = FRESH_SUBJECT_TEMPLATES.get(chosen_template_name, "{Name}, quick question")
-        subject = format_text_placeholders(subject_tpl, selected_lead)
+    base_subject = format_text_placeholders("{Name}, This is a collaboration request.", selected_lead)
+    if kind == 'followup':
+        subject = f"Re: {base_subject}"
     else:
-        # For followups, read the original subject from leads.csv Subject column
-        orig_subject = selected_lead.get('Subject')
-        if not orig_subject or pd.isna(orig_subject) or str(orig_subject).strip() == '':
-            orig_subject = f"{selected_lead.get('Name', '')}, collaboration request"
-            
-        subject = str(orig_subject).strip()
-        if not subject.lower().startswith("re:"):
-            subject = f"Re: {subject}"
+        subject = base_subject
             
     # 7. Execution or Dry-run display
     if args.dry_run:
@@ -219,8 +210,7 @@ def cmd_send_one(args):
             email=selected_lead['Email'],
             status=new_status,
             message_id=msg_id,
-            last_sent_at=get_now_utc_iso(),
-            subject=subject
+            last_sent_at=get_now_utc_iso()
         )
         state_handler.record_send()
         
@@ -232,8 +222,7 @@ def cmd_send_one(args):
             email=selected_lead['Email'],
             status='DISCARDED',
             message_id=None,
-            last_sent_at=get_now_utc_iso(),
-            subject=subject
+            last_sent_at=get_now_utc_iso()
         )
         logger.error(f"PERMANENT FAILURE: Refused for {selected_lead['Email']}. Reason: {e}. Set lead status to DISCARDED.")
         
