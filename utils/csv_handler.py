@@ -45,6 +45,11 @@ class SafeCSVHandler:
         with portalocker.Lock(self.filepath, 'r+', timeout=15) as f:
             df = pd.read_csv(f)
             
+            # Ensure tracking columns are of object/string dtype to prevent pandas warnings/errors
+            for col in ["Status", "MessageId", "LastSentAt", "Subject"]:
+                if col in df.columns:
+                    df[col] = df[col].astype(object)
+            
             # Normalize email comparisons
             email_clean = email.strip().lower()
             df_emails = df['Email'].astype(str).str.strip().str.lower()
@@ -74,30 +79,31 @@ class SafeCSVHandler:
         """
         df = self.get_leads()
         
-        # Replace empty values with None/NA
-        df = df.replace({pd.NA: None, float('nan'): None})
-        
         fresh_leads = []
         followup_leads = []
         
         now = datetime.now(timezone.utc)
         cutoff = now - timedelta(days=followup_delay_days)
         
+        def is_empty(val):
+            return pd.isna(val) or str(val).strip() == '' or str(val).strip().lower() == 'nan'
+        
         for _, row in df.iterrows():
             email = row.get('Email')
-            if not email or str(email).strip() == '':
+            if is_empty(email):
                 continue
                 
-            status = str(row.get('Status') or '').strip()
+            status_val = row.get('Status')
             
-            if status == '':
+            if is_empty(status_val):
                 fresh_leads.append(row.to_dict())
-            elif status == 'SENT':
+            elif str(status_val).strip() == 'SENT':
                 msg_id = row.get('MessageId')
                 last_sent_str = row.get('LastSentAt')
                 
-                if msg_id and last_sent_str:
+                if not is_empty(msg_id) and not is_empty(last_sent_str):
                     try:
+                        last_sent_str = str(last_sent_str).strip()
                         # Parse LastSentAt timestamp (expects ISO format)
                         if last_sent_str.endswith("Z"):
                             last_sent_str = last_sent_str[:-1] + "+00:00"
